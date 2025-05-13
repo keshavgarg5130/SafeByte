@@ -86,15 +86,15 @@ export default function Home() {
               </p>
               <div className="grid grid-cols-3 gap-8">
                 <div className="text-center">
-                  <h3 className="text-4xl font-bold text-blue-600 mb-2">10+</h3>
-                  <p className="text-gray-600">Years of Experience</p>
+                  <h3 className="text-4xl font-bold text-blue-600 mb-2">20+</h3>
+                  <p className="text-gray-600">Months of Experience</p>
                 </div>
                 <div className="text-center">
-                  <h3 className="text-4xl font-bold text-blue-600 mb-2">500+</h3>
+                  <h3 className="text-4xl font-bold text-blue-600 mb-2">5+</h3>
                   <p className="text-gray-600">Projects Completed</p>
                 </div>
                 <div className="text-center">
-                  <h3 className="text-4xl font-bold text-blue-600 mb-2">99%</h3>
+                  <h3 className="text-4xl font-bold text-blue-600 mb-2">100%</h3>
                   <p className="text-gray-600">Client Satisfaction</p>
                 </div>
               </div>
