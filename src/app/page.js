@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-[70vh] flex items-center justify-center text-center overflow-hidden">
+      <section id="home" className="relative min-h-[70vh] flex items-center justify-center text-center overflow-hidden">
         <div className="absolute inset-0">
           <video 
             autoPlay 
@@ -129,7 +129,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="mt-12">
+            <div className="">
               <AnimatedSection delay={200}>
                 <div className="bg-white p-8 rounded-2xl shadow-lg">
                   <h3 className="text-2xl font-bold text-gray-800 mb-4">Our Mission</h3>
