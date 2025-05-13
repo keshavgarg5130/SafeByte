@@ -25,7 +25,7 @@ export default function Home() {
         <div className="relative z-10 px-4">
           <AnimatedSection>
             <h1 className="text-5xl md:text-7xl font-bold text-green-400 mb-6">
-              <span className="text-blue-900">S</span>afeByte
+              SafeByte
             </h1>
           </AnimatedSection>
           <AnimatedSection delay={200}>
