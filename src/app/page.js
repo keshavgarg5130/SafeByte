@@ -1,4 +1,9 @@
+'use client';
+
+import { useState } from 'react';
 import AnimatedSection from '@/components/AnimatedSection';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Home() {
   return (
@@ -64,37 +69,46 @@ export default function Home() {
           </AnimatedSection>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <AnimatedSection delay={100}>
-              <div className="bg-gradient-to-r from-blue-900 to-gray-900 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:bg-gradient-to-r hover:from-blue-700 hover:to-gray-800">
-              <div className="text-green-400 text-4xl mb-4 transition-transform duration-300 hover:scale-110">
-                <i className="fas fa-shield-alt"></i>
-              </div>
-              <h3 className="text-xl font-semibold text-green-400 mb-2 transition-colors duration-300 hover:text-green-300">Smart Password Manager</h3>
-              <p className="text-green-300 transition-opacity duration-300 hover:opacity-100">
-                A secure Python-based password manager that stores and retrieves passwords safely. Includes OTP-based email verification for secure recovery.
-              </p>
-            </div>
+              <a href="/services/password-manager" className="block h-full">
+                <div className="bg-gradient-to-r from-blue-900 to-gray-900 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:bg-gradient-to-r hover:from-blue-700 hover:to-gray-800 h-full">
+                  <div className="text-green-400 text-4xl mb-4 transition-transform duration-300 hover:scale-110">
+                    <i className="fas fa-key"></i>
+                  </div>
+                  <h3 className="text-xl font-semibold text-green-400 mb-2 transition-colors duration-300 hover:text-green-300">Smart Password Manager</h3>
+                  <p className="text-green-300 transition-opacity duration-300 hover:opacity-100">
+                    Secure encrypted password manager with local SQLite storage and military-grade encryption. Store, manage, and generate strong passwords with ease.
+                  </p>
+                  <div className="mt-4 text-green-400 font-medium">Learn more →</div>
+                </div>
+              </a>
             </AnimatedSection>
             <AnimatedSection delay={200}>
-              <div className="bg-gradient-to-r from-red-900 to-gray-900 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:bg-gradient-to-r hover:from-red-700 hover:to-gray-800">
-              <div className="text-green-400 text-4xl mb-4 transition-transform duration-300 hover:scale-110">
-                <i className="fas fa-lock"></i>
-              </div>
-              <h3 className="text-xl font-semibold text-green-400 mb-2 transition-colors duration-300 hover:text-green-300">Malware Detector Tool</h3>
-              <p className="text-green-300 transition-opacity duration-300 hover:opacity-100">
-                A compact Python-based tool designed to help small businesses, IT admins, and cybersecurity learners to quickly analyze suspicious files and detect potential malware using static analysis techniques — without sending files to third-party servers.
-              </p>
-            </div>
+              <a href="/services/malware-detector" className="block h-full">
+                <div className="bg-gradient-to-r from-red-900 to-gray-900 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:bg-gradient-to-r hover:from-red-700 hover:to-gray-800 h-full">
+                  <div className="text-green-400 text-4xl mb-4 transition-transform duration-300 hover:scale-110">
+                    <i className="fas fa-lock"></i>
+                  </div>
+                  <h3 className="text-xl font-semibold text-green-400 mb-2 transition-colors duration-300 hover:text-green-300">Malware Detector Tool</h3>
+                  <p className="text-green-300 transition-opacity duration-300 hover:opacity-100">
+                    Advanced static analysis tool to detect and analyze potential malware with comprehensive reporting. Perfect for small businesses and security enthusiasts.
+                  </p>
+                  <div className="mt-4 text-green-400 font-medium">Learn more →</div>
+                </div>
+              </a>
             </AnimatedSection>
             <AnimatedSection delay={300}>
-              <div className="bg-gradient-to-r from-purple-900 to-gray-900 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:bg-gradient-to-r hover:from-purple-700 hover:to-gray-800">
-              <div className="text-green-400 text-4xl mb-4 transition-transform duration-300 hover:scale-110">
-                <i className="fas fa-user-shield"></i>
-              </div>
-              <h3 className="text-xl font-semibold text-green-400 mb-2 transition-colors duration-300 hover:text-green-300">Vulnerability Assessment Tool</h3>
-              <p className="text-green-300 transition-opacity duration-300 hover:opacity-100">
-                Scans systems deep to find every crack and flaw, So you can patch the holes before attackers even draw.
-              </p>
-            </div>
+              <a href="/services/vulnerability-assessment" className="block h-full">
+                <div className="bg-gradient-to-r from-purple-900 to-gray-900 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:bg-gradient-to-r hover:from-purple-700 hover:to-gray-800 h-full">
+                  <div className="text-green-400 text-4xl mb-4 transition-transform duration-300 hover:scale-110">
+                    <i className="fas fa-user-shield"></i>
+                  </div>
+                  <h3 className="text-xl font-semibold text-green-400 mb-2 transition-colors duration-300 hover:text-green-300">Vulnerability Assessment Tool</h3>
+                  <p className="text-green-300 transition-opacity duration-300 hover:opacity-100">
+                    Comprehensive network scanning and vulnerability detection powered by Nmap and the National Vulnerability Database.
+                  </p>
+                  <div className="mt-4 text-green-400 font-medium">Learn more →</div>
+                </div>
+              </a>
             </AnimatedSection>
           </div>
         </div>
@@ -188,41 +202,7 @@ export default function Home() {
             </div>
             <div className="bg-gradient-to-r from-gray-800 to-gray-900 p-8 rounded-2xl shadow-lg">
               <h3 className="text-2xl font-bold text-green-400 mb-6">Book Your 1:1 Consultation</h3>
-              <form className="space-y-6">
-                <div>
-                  <input
-                    type="text"
-                    placeholder="Full Name"
-                    className="w-full px-4 py-3 bg-gray-700 border border-green-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-green-300"
-                  />
-                </div>
-                <div>
-                  <input
-                    type="email"
-                    placeholder="Email Address"
-                    className="w-full px-4 py-3 bg-gray-700 border border-green-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-green-300"
-                  />
-                </div>
-                <div>
-                  <input
-                    type="tel"
-                    placeholder="Phone Number"
-                    className="w-full px-4 py-3 bg-gray-700 border border-green-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-green-300"
-                  />
-                </div>
-                <div>
-                  <textarea
-                    placeholder="Tell us about your business and security needs"
-                    className="w-full px-4 py-3 bg-gray-700 border border-green-500 rounded-lg h-40 focus:outline-none focus:ring-2 focus:ring-green-400 text-green-300"
-                  ></textarea>
-                </div>
-                <button
-                  type="submit"
-                  className="w-full bg-gradient-to-r from-green-500 to-green-400 text-black py-3 rounded-lg hover:from-green-400 hover:to-green-500 transition-all transform hover:scale-105"
-                >
-                  Schedule Consultation
-                </button>
-              </form>
+              <ConsultationForm />
             </div>
           </div>
           </AnimatedSection>
@@ -291,9 +271,10 @@ export default function Home() {
       </section>
 
       {/* Footer Section */}
-      <footer className="bg-black text-green-300 py-20">
+      <footer id="contact" className="bg-gray-900 text-green-300 py-16">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <h2 className="text-3xl font-bold text-center mb-12">Contact Us</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             <div>
               <h3 className="text-2xl font-bold text-green-400 mb-4">SafeByte</h3>
               <p className="text-green-300 mb-6">
@@ -301,7 +282,7 @@ export default function Home() {
               </p>
               <div className="flex gap-4">
                 <a
-                  href="https://instagram.com"
+                  href="https://www.instagram.com/safebyte_team?igsh=ZHRkZXFzeGQ1NTJr"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-green-400 hover:text-green-300 transition-colors"
@@ -309,7 +290,7 @@ export default function Home() {
                   <i className="fab fa-instagram text-2xl"></i>
                 </a>
                 <a
-                  href="https://youtube.com"
+                  href="https://youtube.com/@safebyte-f2i?si=uVjryVxXNgLF-0Yf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-green-400 hover:text-green-300 transition-colors"
@@ -317,7 +298,7 @@ export default function Home() {
                   <i className="fab fa-youtube text-2xl"></i>
                 </a>
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/safe-byte-a43a90361"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-green-400 hover:text-green-300 transition-colors"
@@ -347,7 +328,7 @@ export default function Home() {
               </ul>
             </div>
             <div>
-              <h3 className="text-xl font-semibold text-green-400 mb-4">Contact Us</h3>
+              <h3 className="text-xl font-semibold text-green-400 mb-4">Get In Touch</h3>
               <ul className="space-y-4">
                 <li>
                   <div className="flex items-center gap-2">
@@ -403,6 +384,148 @@ export default function Home() {
       </footer>
 
       
+      <ToastContainer 
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </main>
+  );
+}
+
+function ConsultationForm() {
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    mobile: '',
+    productDetails: '',
+    productList: '1:1 Consultation'
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('/api/book', {
+        method: 'POST',
+        body: JSON.stringify(formData),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.message || 'Failed to send request');
+      }
+
+      const data = await response.json();
+
+      if (response.ok) {
+        toast.success('Your consultation request has been sent successfully!', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        // Reset form
+        setFormData({
+          fullName: '',
+          email: '',
+          mobile: '',
+          productDetails: '',
+          productList: '1:1 Consultation'
+        });
+      } else {
+        throw new Error(data.message || 'Something went wrong');
+      }
+    } catch (error) {
+      toast.error(error.message || 'Failed to send request. Please try again.', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-6">
+      <div>
+        <input
+          type="text"
+          name="fullName"
+          value={formData.fullName}
+          onChange={handleChange}
+          placeholder="Full Name"
+          className="w-full px-4 py-3 bg-gray-700 border border-green-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-green-300"
+          required
+        />
+      </div>
+      <div>
+        <input
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          placeholder="Email Address"
+          className="w-full px-4 py-3 bg-gray-700 border border-green-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-green-300"
+          required
+        />
+      </div>
+      <div>
+        <input
+          type="tel"
+          name="mobile"
+          value={formData.mobile}
+          onChange={handleChange}
+          placeholder="Phone Number"
+          className="w-full px-4 py-3 bg-gray-700 border border-green-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-green-300"
+          required
+        />
+      </div>
+      <div>
+        <textarea
+          name="productDetails"
+          value={formData.productDetails}
+          onChange={handleChange}
+          placeholder="Tell us about your business and security needs"
+          className="w-full px-4 py-3 bg-gray-700 border border-green-500 rounded-lg h-40 focus:outline-none focus:ring-2 focus:ring-green-400 text-green-300"
+          required
+        />
+      </div>
+      <button
+        type="submit"
+        disabled={isSubmitting}
+        className={`w-full bg-gradient-to-r from-green-500 to-green-400 text-black py-3 rounded-lg hover:from-green-400 hover:to-green-500 transition-all transform hover:scale-105 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
+      >
+        {isSubmitting ? 'Sending...' : 'Schedule Consultation'}
+      </button>
+    </form>
   );
 }

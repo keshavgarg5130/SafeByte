@@ -7,6 +7,10 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   // Handle scroll effect for navbar
   useEffect(() => {
     const handleScroll = () => {
@@ -24,9 +28,28 @@ export default function Navbar() {
   // Smooth scroll to section
   const scrollToSection = (e, sectionId) => {
     e.preventDefault();
+    
+    // If we're not on the home page or if it's the contact section, navigate to home page with hash
+    if (window.location.pathname !== '/' || sectionId === 'contact') {
+      if (window.location.pathname !== '/') {
+        window.location.href = `/#${sectionId}`;
+      } else {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const yOffset = -80; // Adjust for fixed header
+          const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      }
+      return;
+    }
+    
+    // For other sections on the home page
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const yOffset = -80; // Adjust for fixed header
+      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
       setIsMenuOpen(false); // Close mobile menu after clicking a link
     }
   };
@@ -49,30 +72,45 @@ export default function Navbar() {
           </Link>
           
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {['home', 'services', 'about', 'book-call', 'testimonials'].map((item) => (
-              <a
-                key={item}
-                href={`#${item}`}
-                onClick={(e) => scrollToSection(e, item)}
-                className="text-green-300 hover:text-green-400 transition-colors font-medium capitalize"
-              >
-                {item.replace('-', ' ')}
-              </a>
-            ))}
-            <a
-              href="#contact"
-              onClick={(e) => scrollToSection(e, 'contact')}
-              className="bg-green-500 text-black px-4 py-2 rounded-md font-semibold hover:bg-green-400 transition-colors"
-            >
-              Get Started
-            </a>
-          </div>
+          <ul className="hidden md:flex space-x-8">
+            <li>
+              <a href="/" onClick={(e) => {
+                if (window.location.pathname === '/') {
+                  e.preventDefault();
+                  scrollToSection(e, 'home');
+                }
+              }} className="text-gray-300 hover:text-green-400 transition-colors">Home</a>
+            </li>
+            <li>
+              <a href="/#services" onClick={(e) => {
+                if (window.location.pathname === '/') {
+                  e.preventDefault();
+                  scrollToSection(e, 'services');
+                }
+              }} className="text-gray-300 hover:text-green-400 transition-colors">Services</a>
+            </li>
+            <li>
+              <a href="/#about" onClick={(e) => {
+                if (window.location.pathname === '/') {
+                  e.preventDefault();
+                  scrollToSection(e, 'about');
+                }
+              }} className="text-gray-300 hover:text-green-400 transition-colors">About</a>
+            </li>
+            <li>
+              <a href="/#contact" onClick={(e) => {
+                if (window.location.pathname === '/') {
+                  e.preventDefault();
+                  scrollToSection(e, 'contact');
+                }
+              }} className="text-gray-300 hover:text-green-400 transition-colors">Contact</a>
+            </li>
+          </ul>
 
           {/* Mobile menu button */}
           <div className="md:hidden">
             <button 
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              onClick={toggleMenu}
               className="text-green-400 hover:text-green-300 focus:outline-none"
               aria-label="Toggle menu"
             >
@@ -87,30 +125,73 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden mt-4 pb-4">
-            <div className="flex flex-col space-y-4">
-              {['home', 'services', 'about', 'book-call', 'testimonials'].map((item) => (
-                <a
-                  key={item}
-                  href={`#${item}`}
-                  onClick={(e) => scrollToSection(e, item)}
-                  className="block text-green-300 hover:text-green-400 transition-colors py-2 px-4 rounded-md hover:bg-gray-800"
-                >
-                  {item.replace('-', ' ').charAt(0).toUpperCase() + item.replace('-', ' ').slice(1)}
-                </a>
-              ))}
-              <a
-                href="#contact"
-                onClick={(e) => scrollToSection(e, 'contact')}
-                className="block bg-green-500 text-black text-center py-2 px-4 rounded-md font-semibold hover:bg-green-400 transition-colors mt-2"
-              >
-                Get Started
-              </a>
+        {/* Mobile menu */}
+        <div className={`md:hidden fixed inset-0 bg-black/90 z-40 transform ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300`}>
+          <div className="container mx-auto px-4 py-8">
+            <div className="flex justify-between items-center mb-12">
+              <Link href="/" className="text-2xl font-bold text-green-400">SafeByte</Link>
+              <button onClick={toggleMenu} className="text-gray-400 hover:text-white">
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
             </div>
+            <nav className="flex flex-col space-y-6">
+              <a
+                href="/"
+                onClick={(e) => {
+                  if (window.location.pathname === '/') {
+                    e.preventDefault();
+                    scrollToSection(e, 'home');
+                  }
+                  setIsMenuOpen(false);
+                }}
+                className="text-2xl text-gray-300 hover:text-green-400 transition-colors"
+              >
+                Home
+              </a>
+              <a
+                href="/#services"
+                onClick={(e) => {
+                  if (window.location.pathname === '/') {
+                    e.preventDefault();
+                    scrollToSection(e, 'services');
+                  }
+                  setIsMenuOpen(false);
+                }}
+                className="text-2xl text-gray-300 hover:text-green-400 transition-colors"
+              >
+                Services
+              </a>
+              <a
+                href="/#about"
+                onClick={(e) => {
+                  if (window.location.pathname === '/') {
+                    e.preventDefault();
+                    scrollToSection(e, 'about');
+                  }
+                  setIsMenuOpen(false);
+                }}
+                className="text-2xl text-gray-300 hover:text-green-400 transition-colors"
+              >
+                About
+              </a>
+              <a
+                href="/#contact"
+                onClick={(e) => {
+                  if (window.location.pathname === '/') {
+                    e.preventDefault();
+                    scrollToSection(e, 'contact');
+                  }
+                  setIsMenuOpen(false);
+                }}
+                className="text-2xl text-gray-300 hover:text-green-400 transition-colors"
+              >
+                Contact
+              </a>
+            </nav>
           </div>
-        )}
+        </div>
       </div>
     </nav>
   );
