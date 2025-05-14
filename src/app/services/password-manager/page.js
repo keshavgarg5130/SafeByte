@@ -23,10 +23,10 @@ export default function PasswordManager() {
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <button className="bg-green-500 hover:bg-green-600 text-black font-semibold py-3 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105">
-                Download Now
+                Get Started
               </button>
               <button className="border-2 border-green-500 text-green-400 hover:bg-green-500/10 font-semibold py-3 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105">
-                Learn More
+                View Demo
               </button>
             </div>
           </div>
