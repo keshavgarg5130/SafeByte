@@ -8,7 +8,7 @@ export default function PasswordManager() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/cyber-security-and-security-password-login-online-concept-hands-typing-and-touch-id-username-and-password-of-social-media-log-in-with-computer-to-online-important-information-data-protection-hacker-photo.jpg"
+            src="/pass.jpeg"
             alt="Cyber Security Background"
             className="w-full h-full object-cover"
           />
