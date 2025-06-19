@@ -110,6 +110,48 @@ export default function Home() {
                 </div>
               </a>
             </AnimatedSection>
+            <AnimatedSection delay={400}>
+              <a href="/services/file-crawler" className="block h-full">
+                <div className="bg-gradient-to-r from-blue-900 to-gray-900 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:bg-gradient-to-r hover:from-blue-700 hover:to-gray-800 h-full">
+                  <div className="text-green-400 text-4xl mb-4 transition-transform duration-300 hover:scale-110">
+                    <i className="fas fa-search"></i>
+                  </div>
+                  <h3 className="text-xl font-semibold text-green-400 mb-2 transition-colors duration-300 hover:text-green-300">File Crawler</h3>
+                  <p className="text-green-300 transition-opacity duration-300 hover:opacity-100">
+                    Intelligent file scanning system that monitors and analyzes files for suspicious activities and potential threats.
+                  </p>
+                  <div className="mt-4 text-green-400 font-medium">Learn more →</div>
+                </div>
+              </a>
+            </AnimatedSection>
+            <AnimatedSection delay={500}>
+              <a href="/services/screen-monitor" className="block h-full">
+                <div className="bg-gradient-to-r from-red-900 to-gray-900 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:bg-gradient-to-r hover:from-red-700 hover:to-gray-800 h-full">
+                  <div className="text-green-400 text-4xl mb-4 transition-transform duration-300 hover:scale-110">
+                    <i className="fas fa-eye"></i>
+                  </div>
+                  <h3 className="text-xl font-semibold text-green-400 mb-2 transition-colors duration-300 hover:text-green-300">Screen Monitor</h3>
+                  <p className="text-green-300 transition-opacity duration-300 hover:opacity-100">
+                    Real-time screen activity monitoring system that detects and alerts on suspicious activities and unauthorized access.
+                  </p>
+                  <div className="mt-4 text-green-400 font-medium">Learn more →</div>
+                </div>
+              </a>
+            </AnimatedSection>
+            <AnimatedSection delay={600}>
+              <a href="/services/usb-detector" className="block h-full">
+                <div className="bg-gradient-to-r from-purple-900 to-gray-900 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:bg-gradient-to-r hover:from-purple-700 hover:to-gray-800 h-full">
+                  <div className="mb-4 transition-transform duration-300 hover:scale-110">
+                    <img src="/usb.png" alt="USB Icon" className="w-12 h-12 text-green-400" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-green-400 mb-2 transition-colors duration-300 hover:text-green-300">USB Detector</h3>
+                  <p className="text-green-300 transition-opacity duration-300 hover:opacity-100">
+                    Advanced USB device monitoring system that detects and manages USB devices in real-time, preventing unauthorized access.
+                  </p>
+                  <div className="mt-4 text-green-400 font-medium">Learn more →</div>
+                </div>
+              </a>
+            </AnimatedSection>
           </div>
         </div>
       </section>
